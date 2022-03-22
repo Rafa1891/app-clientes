@@ -1,5 +1,5 @@
 import { Cliente } from "./cliente"
-
+/*
 export const CLIENTES: Cliente[]=[
   {id:1,nombre:"Jose",apellido:"Pérez",email:"jp@gmail.com",telefono:654555666,createdAt:"2022-03-21"},
   {id:2,nombre:"Pedro",apellido:"López",email:"js@gmail.com",telefono:654555688,createdAt:"2022-03-21"},
@@ -12,3 +12,4 @@ export const CLIENTES: Cliente[]=[
   {id:9,nombre:"Viti",apellido:"Alvarez",email:"jnh@gmail.com",telefono:654085666,createdAt:"2022-03-21"},
   {id:10,nombre:"Manu",apellido:"Fernández",email:"jpp@gmail.com",telefono:654555566,createdAt:"2022-03-21"},
 ]
+*/
