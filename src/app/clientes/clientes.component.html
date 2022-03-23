@@ -30,7 +30,7 @@ Clientes
   </thead>
   <tbody>
     <tr *ngFor="let item of clientes">
-      <th ><img *ngIf="item.imagen" src="{{item.imagen}}" alt="sin imagen" class="img-thumbnail rounded" style="width:60px;">
+      <th ><img *ngIf="item.imagen" src="http://localhost:8087/api/uploads/imagen/{{item.imagen}}" alt="sin imagen" class="img-thumbnail rounded" style="width:60px;">
         <img *ngIf="!item.imagen" src="{{imagenSrc}}" alt="sin imagen" class="img-thumbnail rounded" style="width:60px;">
       </th>
       <th scope="row">{{item.id}}</th>

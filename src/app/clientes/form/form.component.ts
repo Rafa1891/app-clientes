@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/usuarios/auth.service';
 import swal from 'sweetalert2';
 import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service';
@@ -22,9 +23,11 @@ export class FormComponent implements OnInit {
 
 
   constructor(private clienteService:ClienteService,private router:Router,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute,private authService:AuthService) { }
 
   ngOnInit(): void {
+
+    if(this.authService.isAuthenticated()){
     this.clienteService.getRegiones().subscribe(
       resp=>this.regiones=resp
     );
@@ -39,6 +42,10 @@ export class FormComponent implements OnInit {
         }
       }
     );
+    }else{
+      swal('No está autenticado','no autenticado','info');
+      this.router.navigate(["/login"]);
+    }
   }
 
   compararRegion(o1:Region,o2:Region):boolean{
