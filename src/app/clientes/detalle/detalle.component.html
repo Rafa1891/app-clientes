@@ -8,8 +8,9 @@
         <ul class="list-group text-white mb-3">
           <li class="list-group">
             <div class="col-sm">
-                <img src="http://localhost:8087/api/uploads/imagen/{{cliente.imagen}}"
+                <img *ngIf="cliente.imagen" src="http://localhost:8087/api/uploads/imagen/{{cliente.imagen}}"
                  alt="{{cliente.imagen}}" class="img-thumbnail row" width="100px;">
+                 <img *ngIf="!cliente.imagen" src="{{imageSrc}}" alt="sin imagen"class="img-thumbnail row" width="100px;">
             </div>
 
           </li>

@@ -18,10 +18,14 @@ export class DetalleComponent implements OnInit {
   cliente!:Cliente;
   fotoSeleccionada!:File;
   progreso!:number;
+  imageSrc!:string;
+
 
   constructor(private clienteService:ClienteService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.imageSrc = '/assets/avatar.png';
+
     this.activatedRoute.paramMap.subscribe(
       params=>{
         let id:number =+params.get('id')!;
