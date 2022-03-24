@@ -1,0 +1,25 @@
+<div class="card bg-muted">
+  <div class="card-header">
+    {{titulo}}
+  </div>
+
+  <div class="card-body">
+    <form  >
+    <div class="form-group row">
+      <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+      <div class="col-sm-6">
+        <input type="text" name="nombre" [(ngModel)]="municipio.nombre" class="form-control" placeholder="Introduzca el nombre del municipio..." required>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+
+      <div class="col-sm-6">
+        <button *ngIf="!municipio.id" (click)="create()" class="btn btn-outline-secondary mt-4">Crear</button>
+        <button *ngIf="municipio.id" (click)="update()" class="btn btn-outline-secondary mt-4">Actualizar</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>

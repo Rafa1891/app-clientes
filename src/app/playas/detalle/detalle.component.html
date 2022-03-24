@@ -1,0 +1,41 @@
+<div class="card bg-muted ">
+  <div class="card-header">
+    {{titulo}}
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <ul class="list-group  mb-3">
+          <li class="list-group">
+            <div class="col-sm">
+                <img *ngIf="playa.imagen" src="http://localhost:8087/api/uploads/imagen/{{playa.imagen}}"
+                 alt="{{playa.imagen}}" class="img-thumbnail row" width="100px;">
+                 <img *ngIf="!playa.imagen" src="{{imageSrc}}" alt="sin imagen"class="img-thumbnail row" width="100px;">
+            </div>
+
+          </li>
+
+          <li class="list-group">{{playa.nombre}}</li>
+          <li class="list-group">{{playa.oleaje}}</li>
+          <li class="list-group">{{playa.longitud}}</li>
+          <li class="list-group">{{playa.tipo}}</li>
+          <li class="list-group">{{playa.municipio.nombre}}</li>
+          <li class="list-group">{{playa.createdAt}}</li>
+        </ul>
+
+        <div class="input-group">
+          <div class="custom-file">
+            <label for="inputImg" class="custom-file-label">Buscar imagen</label>
+            <input (change)="seleccionarImagen($event)" type="file" class="custom-file-input m-2" id="input">
+
+          <div class="input-group-append">
+            <button (click)="subirImagen()" class="btn btn-outline-secondary m-2">Guardar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

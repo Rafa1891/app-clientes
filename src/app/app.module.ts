@@ -3,13 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './rutas/app-routing.module';
 import { AppComponent } from './app.component';
-import { ClienteService } from './clientes/cliente.service';
-import { ClientesModule } from './clientes/clientes.module';
+import { PlayaService } from './playas/playa.service';
+import { PlayasModule } from './playas/playas.module';
 import { FooterModule } from './footer/footer.module';
 import { HeaderModule } from './header/header.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { HttpClientModule} from '@angular/common/http';
 import { AuthService } from './usuarios/auth.service';
+import { MunicipiosModule } from './municipios/municipios.module';
+import { MunicipioService } from './municipios/municipio.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,16 @@ import { AuthService } from './usuarios/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ClientesModule,
+    PlayasModule,
+    MunicipiosModule,
     FooterModule,
     HeaderModule,
     UsuariosModule,
     HttpClientModule
   ],
   providers: [
-    ClienteService,
+    PlayaService,
+    MunicipioService,
     AuthService
   ],
   bootstrap: [AppComponent]

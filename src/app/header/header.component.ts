@@ -11,7 +11,7 @@ import { AuthService } from '../usuarios/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  titulo:string="App Clientes";
+  titulo:string="Gestión de Playas Asturias";
 
   constructor( public authService:AuthService, private router:Router) { }
 
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
 
     this.authService.logout();
 
-    swal('Logout', `${username}, has cerrado sesion con exito`, 'success');
+    swal('Logout', `${username}, has cerrado sesión con éxito.`, 'success');
 
 
 

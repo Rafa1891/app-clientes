@@ -1,0 +1,62 @@
+<div class="card bg-muted">
+  <div class="card-header">
+    {{titulo}}
+  </div>
+
+  <div class="card-body">
+    <form #playaForm="ngForm" >
+    <div class="form-group row">
+      <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+      <div class="col-sm-6">
+        <input type="text" name="nombre" [(ngModel)]="playa.nombre" class="form-control" placeholder="Introduzca el nombre de la playa..." required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="oleaje" class="col-form-label col-sm-2">Oleaje</label>
+      <div class="col-sm-6">
+        <input type="text" name="oleaje" [(ngModel)]="playa.oleaje" class="form-control" placeholder="Introduzca el oleaje (fuerte, medio, suave)..." required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="longitud" class="col-form-label col-sm-2">Longitud</label>
+      <div class="col-sm-6">
+        <input type="number" name="longitud" [(ngModel)]="playa.longitud" class="form-control" placeholder="Introduzca la longitud de la playa..."required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="tipo" class="col-form-label col-sm-2">Tipo</label>
+      <div class="col-sm-6">
+        <input type="text" name="tipo" [(ngModel)]="playa.tipo" class="form-control" placeholder="Introduzca el tipo de playa (arena,roca,piedras)..." required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="fecha" class="col-form-label col-sm-2">Fecha</label>
+      <div lass="col-sm-6">
+        <input type="date" name="fecha" [(ngModel)]="playa.createdAt" class="form-control" >
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="municipio" class="col-form-label col-sm-2">Municipio</label>
+      <div lass="col-sm-6">
+        <select [compareWith]="compararMunicipio" style="width:500;"  name="municipio" [(ngModel)]="playa.municipio">
+          <option [ngValue]="undefined">--Seleccione un municipio--</option>
+          <option *ngFor="let reg of municipios" [ngValue]="reg">{{reg.nombre}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+
+      <div lass="col-sm-6">
+        <button *ngIf="!playa.id" (click)="create()" class="btn btn-outline-secondary mt-4">Crear</button>
+        <button *ngIf="playa.id" (click)="update()" class="btn btn-outline-secondary mt-4">Actualizar</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>

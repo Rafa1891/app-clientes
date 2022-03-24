@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClientesComponent } from './clientes.component';
+import { PlayasComponent } from './playas.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../rutas/app-routing.module';
@@ -10,7 +10,7 @@ import { DetalleComponent } from './detalle/detalle.component';
 
 @NgModule({
   declarations: [
-    ClientesComponent,
+    PlayasComponent,
     FormComponent,
     DetalleComponent
   ],
@@ -20,8 +20,9 @@ import { DetalleComponent } from './detalle/detalle.component';
     AppRoutingModule
   ],
   exports:[
-    ClientesComponent,
-    FormComponent
+    PlayasComponent,
+    FormComponent,
+    DetalleComponent
   ]
 })
-export class ClientesModule { }
+export class PlayasModule { }

@@ -1,0 +1,59 @@
+<div class="container">
+<div class="card border-muted mb-3">
+  <div class="card-header">
+Playas
+  </div>
+  <div class="card-body text-muted">
+<h4>Listado de playas</h4>
+
+<div *ngIf="authService.token" class="my-2 text-left">
+  <button
+        class="btn btn.rounded btn-outline-secondary"
+        type="button"
+        [routerLink]="['/playas/crear']" >
+  Nueva Playa
+ </button>
+
+</div>
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Imagen</th>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Oleaje</th>
+      <th scope="col">Longitud (m)</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Municipio</th>
+      <th scope="col">Fecha de creación</th>
+      <th scope="col" *ngIf="authService.token">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of playas">
+      <th ><img *ngIf="item.imagen" src="http://localhost:8087/api/uploads/imagen/{{item.imagen}}" alt="sin imagen" class="img-thumbnail rounded" style="width:60px;">
+        <img *ngIf="!item.imagen" src="{{imagenSrc}}" alt="sin imagen" class="img-thumbnail rounded" style="width:60px;">
+      </th>
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.nombre}}</td>
+      <td>{{item.oleaje}}</td>
+      <td>{{item.longitud}}</td>
+      <td>{{item.tipo}}</td>
+      <td>{{item.municipio.nombre}}</td>
+      <td>{{item.createdAt}}</td>
+      <td *ngIf="authService.token" >
+        <button class="btn btn-outline-secondary rounded btn-sm m-1" [routerLink]="['/playas/ver',item.id]"  >Ver<i class="bi bi-search"></i></button>
+        <button class="btn btn-outline-warning rounded btn-sm m-1" [routerLink]="['/playas/editar',item.id]"  >Editar<i class="bi bi-pencil"></i></button>
+        <button class="btn btn-outline-danger rounded btn-sm m-1" (click)="delete(item)">Eliminar<i class="bi bi-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  </div>
+</div>
+
+</div>
+
+

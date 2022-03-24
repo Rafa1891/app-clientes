@@ -1,31 +1,50 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientesComponent } from '../clientes/clientes.component';
-import { DetalleComponent } from '../clientes/detalle/detalle.component';
-import { FormComponent } from '../clientes/form/form.component';
+import { PlayasComponent } from '../playas/playas.component';
+import { DetalleComponent } from '../playas/detalle/detalle.component';
+import { FormComponent } from '../playas/form/form.component';
 import { LoginComponent } from '../usuarios/login/login.component';
+import { VerMunicipioComponent } from '../municipios/verMunicipio/verMunicipio.component';
+import { FormuComponent } from '../municipios/formu/formu.component';
+import { MunicipiosComponent } from '../municipios/municipios.component';
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/clientes',
+    redirectTo:'/playas',
     pathMatch:'full'
   },
   {
-    path:'clientes',
-    component:ClientesComponent,
+    path:'playas',
+    component:PlayasComponent,
   },
   {
-    path:'clientes/crear',
+    path:'playas/crear',
     component:FormComponent
   },
   {
-    path:'clientes/editar/:id',
+    path:'playas/editar/:id',
     component:FormComponent
   },
   {
-    path:'clientes/ver/:id',
+    path:'playas/ver/:id',
     component:DetalleComponent
+  },
+  {
+    path:'municipios',
+    component:MunicipiosComponent,
+  },
+  {
+    path:'municipios/crear',
+    component:FormuComponent
+  },
+  {
+    path:'municipios/editar/:id',
+    component:FormuComponent
+  },
+  {
+    path:'municipios/ver/:id',
+    component:VerMunicipioComponent
   },
   {
     path:'login',

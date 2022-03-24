@@ -1,4 +1,4 @@
-export class Region{
+export class Municipio{
   id!:number;
   nombre!:string;
 }

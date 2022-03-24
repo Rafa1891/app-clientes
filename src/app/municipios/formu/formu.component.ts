@@ -2,42 +2,42 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/usuarios/auth.service';
 import swal from 'sweetalert2';
-import { Cliente } from '../cliente';
-import { ClienteService } from '../cliente.service';
-import { Region } from '../region';
+import { Municipio } from '../municipio';
+import { MunicipioService } from '../municipio.service';
+
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
+  selector: 'app-formu',
+  templateUrl: './formu.component.html',
   styles: [
   ]
 })
-export class FormComponent implements OnInit {
+export class FormuComponent implements OnInit {
 
-  titulo:string="Nuevo Cliente";
+  titulo:string="Nuevo Municipio";
 
-  cliente:Cliente=new Cliente();
+  municipio:Municipio=new Municipio();
 
-  regiones!:Region[];
+  municipios!:Municipio[];
 
 
 
-  constructor(private clienteService:ClienteService,private router:Router,
+  constructor(private municipioService:MunicipioService,private router:Router,
     private activatedRoute:ActivatedRoute,private authService:AuthService) { }
 
   ngOnInit(): void {
 
     if(this.authService.isAuthenticated()){
-    this.clienteService.getRegiones().subscribe(
-      resp=>this.regiones=resp
+    this.municipioService.getMunicipios().subscribe(
+      resp=>this.municipios=resp
     );
 
     this.activatedRoute.paramMap.subscribe(
       params=>{
         let id=+params.get('id')!;
         if(id){
-          this.clienteService.getCliente(id).subscribe(
-            (resp)=> this.cliente=resp
+          this.municipioService.getMunicipio(id).subscribe(
+            (resp)=> this.municipio=resp
           )
         }
       }
@@ -48,7 +48,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  compararRegion(o1:Region,o2:Region):boolean{
+  compararMunicipio(o1:Municipio,o2:Municipio):boolean{
     if(o1===undefined && o2===undefined){
       return true;
     }
@@ -59,12 +59,12 @@ export class FormComponent implements OnInit {
 
   create():void{
     console.log("formulario enviado");
-    console.log(this.cliente);
+    console.log(this.municipio);
 
-    this.clienteService.create(this.cliente).subscribe(
+    this.municipioService.create(this.municipio).subscribe(
       resp=>{
-        swal('Nuevo cliente',`${this.cliente.nombre} creado con éxito.`);
-        this.router.navigate(["/clientes"]);
+        swal('Nuevo municipio',`${this.municipio.nombre} creado con éxito.`);
+        this.router.navigate(["/municipios"]);
       },
       err=>{
         console.log('Código de error backend',err.status);
@@ -73,11 +73,11 @@ export class FormComponent implements OnInit {
   }
 
   update():void{
-    console.log(this.cliente);
-    this.clienteService.update(this.cliente).subscribe(
+    console.log(this.municipio);
+    this.municipioService.update(this.municipio).subscribe(
       resp=>{
-        this.router.navigate(['/clientes']);
-        swal('Cliente actualizado',`${this.cliente.nombre}`,'success');
+        this.router.navigate(['/municipios']);
+        swal('Municipio actualizado',`${this.municipio.nombre}`,'success');
       },
       err=>{
         console.error('Código del error desde el backend '+err.status);
